@@ -1,0 +1,99 @@
+%form-theme {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+    text-align: center;
+    color: black;
+    box-shadow: 0 .5rem .5rem .5rem black;
+    border-radius: 1rem;
+    input, select{
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+ 
+%button-theme {
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    background: black;
+    color: white;
+}
+
+// Search hexidecimal numbers for css in google and update this value to whatever color ypou want 
+$primary-color: #ff0000;
+
+// created a mixin that takes two parameters and creates a linear gradient
+@mixin gradient($color1: red, $color2: blue) {
+background-image: linear-gradient($color1, $color2)
+}
+
+
+//nesting
+body{
+    // calling gradient mixin with 2 paramaters to set the background 
+    // use w3 schools link to view the different types of gradients
+    @include gradient(purple, yellow);
+    color: white;
+    nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10rem auto;
+        width: 50%;
+        text-align: center;
+        a{
+            text-decoration: none;
+            color: white;
+            border: 1px solid black;
+            padding: .5rem;
+            font-size: 1rem;
+            border-radius: 1rem;
+            background: black;
+            width: 5rem;
+            height: 1rem;
+            margin: 1rem;
+        }
+    }
+}
+ //Example of inheritants
+.budgetForm, .incomeForm, .expenseForm{
+   @extend %form-theme
+}
+button{
+    @extend %button-theme
+}
+
+
+.allBudgetFormWrapper{
+    margin: 10rem auto;
+    max-width: 50%;
+}
+ 
+.viewBudget {
+    h1{
+        color: $primary-color
+    }
+    .headerWrapping{
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+        .expenseItem{} 
+    
+}
+@media screen and (min-width: 370px) and (max-width: 700px){
+    .budgetForm, .incomeForm, .expenseForm{
+        @extend %form-theme;
+        grid-template-columns: repeat(1, 1fr);
+     }
+     nav{
+        flex-direction: column;
+        a{
+            font-size: .5rem;
+        }
+     }
+  }
